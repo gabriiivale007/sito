@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'home_page.dart'; // Importa il nuovo file
 
 void main() {
   runApp(const MyApp());
@@ -9,54 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text(widget.title),
+    return MaterialApp(
+      title: 'Gabriele Valente - Portfolio',
+      theme: ThemeData.dark().copyWith(
+        // Imposta un tema scuro di base
+        scaffoldBackgroundColor: ModernAppColors.background,
       ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
-            ),
-            const SizedBox(height: 20),
-            CupertinoButton(
-              color: CupertinoColors.activeBlue,
-              onPressed: _incrementCounter,
-              child: const Icon(CupertinoIcons.add),
-            ),
-          ],
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: const ModernHomePage(),
     );
   }
 }
